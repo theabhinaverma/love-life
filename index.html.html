@@ -120,14 +120,13 @@ header p { margin: 4px 0; font-size: 0.9rem; }
 .slideshow {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 260px;
   overflow: hidden;
   border-radius: 12px;
   background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
 }
 
 .slide {
@@ -135,15 +134,27 @@ header p { margin: 4px 0; font-size: 0.9rem; }
   inset: 0;
   opacity: 0;
   transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide.active { opacity: 1; }
 
-.slide img,
-.slide video {
+/* Images fill nicely */
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Videos keep original ratio */
+.slide video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  background: black;
 }
 
 /* Placeholder for empty media */
@@ -250,54 +261,14 @@ setInterval(()=>{
 
 /* Data */
 const daysData = [
-  {
-    title:"🌹 Rose Day — Feb 7",
-    date:"02-07",
-    message:"Since the day you came into my life, everything has felt warmer and brighter. Like a rose adds beauty wherever it blooms, you add meaning to every moment I live. Thank you for bringing color, comfort, and happiness into my world. My feelings for you grow a little more beautiful every single day, and I’m grateful to call you mine. 🌹",
-    images:[]
-  },
-  {
-    title:"💍 Propose Day — Feb 8",
-    date:"02-08",
-    message:"If life gave me a chance to choose again and again, I would still choose you every single time. Being with you feels natural, peaceful, and exciting all at once. Today, I just want to say that I want you beside me in every chapter of my life — in laughter, in struggles, and in dreams yet to come. You are not just part of my story, you are my favorite part. 💍",
-    images:["photos/propose.mp4"]
-  },
-  {
-    title:"🍫 Chocolate Day — Feb 9",
-    date:"02-09",
-    message:"Life can sometimes feel stressful and exhausting, but somehow you make everything sweeter just by being there. A simple conversation with you, your smile, or your presence makes even ordinary days special. Chocolate is sweet, but the happiness you bring into my life is even sweeter and more comforting. 🍫",
-    images:[]
-  },
-  {
-    title:"🧸 Teddy Day — Feb 10",
-    date:"02-10",
-    message:"Whenever you feel tired, stressed, or low, I wish I could just hug you tight and make everything okay. Until then, imagine this teddy carrying all my hugs for you. Always remember there is someone who deeply cares about your happiness and wants to see you smile, no matter what happens. You are my comfort and my safe place. 🧸",
-    images:[]
-  },
-  {
-    title:"🤝 Promise Day — Feb 11",
-    date:"02-11",
-    message:"I may not be perfect, but my feelings for you are real and sincere. I promise to stand by you on good days and difficult ones, to listen when you need to talk, and to support your dreams as if they were my own. No matter how life changes around us, one thing will remain constant — I’m here for you, always. 🤝",
-    images:["photos/promise1.jpeg","photos/promise.jpeg"]
-  },
-  {
-    title:"🤗 Hug Day — Feb 12",
-    date:"02-12",
-    message:"A hug from you feels like the world suddenly becomes lighter and calmer. In that moment, worries disappear and everything feels right. Whenever life feels heavy, I hope you remember that my arms will always be a place where you can rest, laugh, or simply be yourself without fear. 🤗",
-    images:["photos/hug1.jpeg","photos/hug.jpeg"]
-  },
-  {
-    title:"💋 Kiss Day — Feb 13",
-    date:"02-13",
-    message:"A simple kiss from you has the power to turn an ordinary day into a beautiful memory. It carries affection, comfort, and a connection that words cannot fully express. I cherish every little moment we share because someday these small memories will become our most precious stories. Loving you feels so natural and peaceful. 💋",
-    images:["photos/kiss1.jpeg","photos/kiss2.jpeg"]
-  },
-  {
-    title:"❤️ Valentine's Day — Feb 14",
-    date:"02-14",
-    message:"Having you in my life feels like finding something precious when I wasn’t even searching for it. You have become part of my happiness, my dreams, and my everyday peace. On this Valentine’s Day, I just want to thank you for being you — for your patience, your love, and the warmth you bring into my world. No matter what the future holds, I’m grateful that today we have each other, and that means everything to me. ❤️",
-    images:["photos/vale.jpeg"]
-  }
+  { title:"🌹 Rose Day — Feb 7", date:"02-07", message:"Since the day you came into my life, everything has felt warmer and brighter. Like a rose adds beauty wherever it blooms, you add meaning to every moment I live. Thank you for bringing color, comfort, and happiness into my world. My feelings for you grow a little more beautiful every single day, and I’m grateful to call you mine. 🌹", images:[] },
+  { title:"💍 Propose Day — Feb 8", date:"02-08", message:"If life gave me a chance to choose again and again, I would still choose you every single time. Being with you feels natural, peaceful, and exciting all at once. Today, I just want to say that I want you beside me in every chapter of my life — in laughter, in struggles, and in dreams yet to come. You are not just part of my story, you are my favorite part. 💍", images:["photos/propose.mp4"] },
+  { title:"🍫 Chocolate Day — Feb 9", date:"02-09", message:"Life can sometimes feel stressful and exhausting, but somehow you make everything sweeter just by being there. A simple conversation with you, your smile, or your presence makes even ordinary days special. Chocolate is sweet, but the happiness you bring into my life is even sweeter and more comforting. 🍫", images:[] },
+  { title:"🧸 Teddy Day — Feb 10", date:"02-10", message:"Whenever you feel tired, stressed, or low, I wish I could just hug you tight and make everything okay. Until then, imagine this teddy carrying all my hugs for you. Always remember there is someone who deeply cares about your happiness and wants to see you smile, no matter what happens. You are my comfort and my safe place. 🧸", images:[] },
+  { title:"🤝 Promise Day — Feb 11", date:"02-11", message:"I may not be perfect, but my feelings for you are real and sincere. I promise to stand by you on good days and difficult ones, to listen when you need to talk, and to support your dreams as if they were my own. No matter how life changes around us, one thing will remain constant — I’m here for you, always. 🤝", images:["photos/promise1.jpeg","photos/promise.jpeg"] },
+  { title:"🤗 Hug Day — Feb 12", date:"02-12", message:"A hug from you feels like the world suddenly becomes lighter and calmer. In that moment, worries disappear and everything feels right. Whenever life feels heavy, I hope you remember that my arms will always be a place where you can rest, laugh, or simply be yourself without fear. 🤗", images:["photos/hug1.jpeg","photos/hug.jpeg"] },
+  { title:"💋 Kiss Day — Feb 13", date:"02-13", message:"A simple kiss from you has the power to turn an ordinary day into a beautiful memory. It carries affection, comfort, and a connection that words cannot fully express. I cherish every little moment we share because someday these small memories will become our most precious stories. Loving you feels so natural and peaceful. 💋", images:["photos/kiss1.jpeg","photos/kiss2.jpeg"] },
+  { title:"❤️ Valentine's Day — Feb 14", date:"02-14", message:"Having you in my life feels like finding something precious when I wasn’t even searching for it. You have become part of my happiness, my dreams, and my everyday peace. On this Valentine’s Day, I just want to thank you for being you — for your patience, your love, and the warmth you bring into my world. No matter what the future holds, I’m grateful that today we have each other, and that means everything to me. ❤️", images:["photos/vale.jpeg"] }
 ];
 
 function isUnlockedDay(d){
@@ -327,7 +298,7 @@ function updateCountdown(){
 setInterval(updateCountdown,1000);
 updateCountdown();
 
-/* Slideshow builder — FIXED to handle empty media safely */
+/* Slideshow builder — safe */
 function createSlideshow(mediaList){
   const box=document.createElement("div");
   box.className="slideshow";
@@ -341,9 +312,16 @@ function createSlideshow(mediaList){
 
       if(typeof src === "string" && src.toLowerCase().endsWith(".mp4")){
         const video=document.createElement("video");
-        video.src=src;
         video.controls=true;
         video.loop=true;
+        video.playsInline=true;
+        video.preload="metadata";
+
+        const source=document.createElement("source");
+        source.src=src;
+        source.type="video/mp4";
+        video.appendChild(source);
+
         slide.appendChild(video);
       } else {
         const img=document.createElement("img");
@@ -356,20 +334,17 @@ function createSlideshow(mediaList){
     });
   }
 
-  /* If no slides created, show placeholder instead */
   if(slides.length === 0){
     const empty=document.createElement("div");
     empty.className="empty-slide slide active";
-    empty.innerText="❤️ You are the love of my life ❤️";
+    empty.innerText="❤️ Our memories go here ❤️";
     box.appendChild(empty);
     return box;
   }
 
-  /* Activate first slide safely */
   let index=0;
   slides[index].classList.add("active");
 
-  /* Only rotate if multiple slides exist */
   if(slides.length > 1){
     setInterval(()=>{
       slides[index].classList.remove("active");
